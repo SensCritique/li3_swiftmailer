@@ -16,7 +16,6 @@ abstract class Transport extends \lithium\core\Object {
 	 * Keys to set within config
 	 */
 	protected $config = array();
-	
 	protected function _init() {
 		$this->_classes += array(
 			'transport' => '\\Swift_MailTransport',
@@ -40,8 +39,7 @@ abstract class Transport extends \lithium\core\Object {
 
 	protected function get_transport() {
 		if (!isset($this->_transport)) {
-			$transport = $this->_classes['transport'];
-			$this->_transport = $transport::newInstance();
+			$this->_transport = new $this->_classes['transport']();
 		}
 		return $this->_transport;
 	}
@@ -50,7 +48,7 @@ abstract class Transport extends \lithium\core\Object {
 		if (!isset($this->_mailer)) {
 			$mailer = $this->_classes['mailer'];
 			$this->_config();
-			$this->_mailer = $mailer::newInstance($this->get_transport());
+			$this->_mailer = new $mailer($this->get_transport());
 		}
 		return $this->_mailer;
 	}
