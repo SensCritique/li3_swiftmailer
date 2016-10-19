@@ -2,6 +2,8 @@
 
 namespace li3_swiftmailer\mailer;
 
+use lithium\aop\Filters;
+
 /**
  * Manages transport for mailers
  */
@@ -28,7 +30,7 @@ class Transports extends \lithium\core\Adaptable
 	 * @see lithium\core\Adaptable::_initAdapter()
 	 */
 	protected static function _initAdapter($class, array $config) {
-		return static::_filter(__FUNCTION__, compact('class', 'config'), function($self, $params) {
+		return Filters::run(get_called_class(), __FUNCTION__, compact('class', 'config'), function($params) {
 			$transport = new $params['class']($params['config']);
 			$transport->config($params['config']);
 			return $transport->get_mailer();

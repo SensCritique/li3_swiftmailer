@@ -51,14 +51,16 @@ class TransportsTest extends \lithium\test\Unit {
 
 		$mailer = Transports::adapter('default');
 		$this->assert($mailer);
-		
+
 		$transport = $mailer->getTransport();
 		$this->assert($transport);
 	}
 
 	public function test_unknown() {
-		$this->expectException();
-		$mailer = Transports::adapter('foo');
+		$shouldThrowConfigException = function() {
+			$mailer = Transports::adapter('foo');
+		};
+		$this->assertException('lithium\core\ConfigException', $shouldThrowConfigException);
 	}
 }
 
