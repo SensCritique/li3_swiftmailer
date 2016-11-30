@@ -8,7 +8,6 @@
     "authors": [],
 	"require": {
 		"php": ">=5.3",
-        "composer/installers": "1.*",
-        "unionofrad/lithium": "dev*"
+        "composer/installers": "1.*"
 	}
 }
