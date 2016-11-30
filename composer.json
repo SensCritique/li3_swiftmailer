@@ -1,0 +1,14 @@
+{
+	"name": "senscritique/li3_swiftmailer",
+	"type": "lithium-library",
+	"description": "This li₃ plugin adds the possibility to send mail with Swiftmailer library.",
+	"keywords": ["lithium", "li3", "plugin", "swiftmailer"],
+    "homepage": "http://li3.me",
+	"license": "BSD-3-clause",
+    "authors": [],
+	"require": {
+		"php": ">=5.3",
+        "composer/installers": "1.*",
+        "unionofrad/lithium": "dev*"
+	}
+}
